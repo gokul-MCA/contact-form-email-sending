@@ -4,6 +4,7 @@
 // Axios (for making HTTP requests) ---> npm i axios
 
 "use client";
+import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -18,18 +19,18 @@ const ContactForm = () => {
   const [status, setStatus] = useState("");
 
   const onSubmit = async (data) => {
+    setSubmit(1);
     try {
       const response = await axios.post("api/sendEmailer", data, {
         headers: {
           "Content-Type": "application/json",
         },
       });
-
       if (response.status === 200) {
-        setSubmit(0);
         setStatus("Successfully sent");
         console.log("Email sent successfully:", response.data);
         reset();
+        setSubmit(0);
       } else {
         setStatus("Failed to send email!");
         console.log("Error sending email:", response.data);
