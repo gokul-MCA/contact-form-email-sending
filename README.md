@@ -1,36 +1,136 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Contact Email 📪📬📭 Sending - (Manual Validation + SMTP + Fetch) & (React Hook Form + Resend + Axios)
 
-## Getting Started
+This project demonstrates how to send contact emails using various methods and technologies, offering a flexible and comprehensive solution for both manual form validation and React Hook Form integration. The repository includes examples of email sending using traditional SMTP with Nodemailer and modern Resend API, all tied together with frontend form validation using React Hook Form and Axios for API requests.
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Features
+1. **Manual Validation**
+   -  A contact form using custom validation techniques without any external libraries, providing complete control over validation rules.
+    
+2. **React Hook Form**
+   - A form handling solution that simplifies form validation and submission, using the popular React Hook Form library.
+     
+3. **Email Sending (SMTP)**
+   - Demonstrates sending contact form data via SMTP using Nodemailer, allowing for email sending through a configured SMTP server.
+     
+4. **Email Sending (Resend API)**
+   - Showcases sending emails using the Resend API, a modern and easy-to-use solution for email delivery without the complexity of SMTP setup.
+  
+5. **Axios for Fetching**
+   - Uses Axios to make HTTP requests from the frontend, sending form data to the backend for email dispatch.
+
+
+## 🚀 Tech Stack
+
+1. **Frontend:**
+   - Next.js (React framework)
+   - React Hook Form (form handling and validation)
+   - Axios (for making HTTP requests)
+
+2. **Backend:**
+   - Node.js (via Next.js API routes)
+   - Nodemailer (for SMTP email sending)
+   - Resend API (for modern email sending)
+
+
+## ⚙️ Prerequisites
+
+- Node.js installed.
+- A Resend API key (if you're using Resend).
+- SMTP server credentials (if you're using SMTP).
+
+## 💻 Running the Project Locally
+
+1. **Clone the repository**
+
+   - git clone https://github.com/your-username/contact-email-sending-nextjs.git
+   - cd contact-email-sending-nextjs
+
+2. **Install Dependency**
+   
+   - Run the following command to install the necessary dependencies:
+   - npm install
+
+3. **Set up environment variables**
+   
+   - In the root of the project, create a .env.local file and add the following environment variables.
+ ----------------------------------------
+- For SMTP:
+  - SMTP_HOST=your_smtp_host        
+  - SMTP_PORT=your_smtp_port          
+  - SMTP_USER=your_smtp_username    
+  - SMTP_PASS=your_smtp_password    
+
+- For Resend:
+  - RESEND_API_KEY=your_resend_api_key
+-----------------------------------------
+
+4. **Start the development server**
+   
+   - Run the following command to start the Next.js development server:
+   - npm run dev
+   - This will start the app on http://localhost:3000.
+
+5. **Test the contact form**
+
+   - Open your browser and navigate to http://localhost:3000.
+   - Fill out the contact form and click Send Email
+   - Check your inbox for the sent email (either through SMTP or Resend).
+
+
+## 🗂️ Folder Structure
+
+```
+#Repository Map
+
+.
+└── contact-email/
+    ├── app/
+    │   ├── api/
+    │   │   ├── sendemail/                 # Resend email route
+    │   │   │   └── route.jsx
+    │   │   └── sendEmailer/               # SMTP email route
+    │   │       └── route.jsx
+    │   ├── globals.css                    # Global app styles
+    │   ├── layout.jsx                     # App layout
+    │   ├── page.jsx                       # Main page (contact form or homepage)
+    │   ├── manual-validate/               # Manual validation form page
+    │   │   └── page.jsx
+    │   └── react-hook/                    # React Hook Form-based form page
+    │       └── page.jsx
+    ├── components/
+    │   ├── contactForm.jsx                # React Hook Form contact form
+    │   └── manualValidateContactForm.jsx  # Manual validation contact form
+    └── env/                               # Environment Configuration file
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 📖 Contributing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Feel free to fork this project, create issues, or submit pull requests. If you have suggestions or improvements, please open an issue and I will review it.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## 📝 License & Author
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- This project is open source and available under the MIT License.
+- [@gokul](https://github.com/gokul-MCA)💚
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## 💡 Notes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Ensure you never commit sensitive information, such as your Resend API key or SMTP credentials, to public repositories. Use the .env.local file to keep this information safe.
+  
+- The project is designed for Next.js 13+ with the new App Directory. If you're using an older version of Next.js, you may need to adjust your file structure to work with the traditional pages/ directory.
+  
+- For form validation, you can choose between React Hook Form and manual validation, depending on your preference and the complexity of the form.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+
+
+
+
+
+
+
