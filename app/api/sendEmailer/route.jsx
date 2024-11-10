@@ -26,11 +26,11 @@ export async function POST(req) {
 `;
 
   const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com", // e.g., smtp.example.com
-    port: 465,
+    host: process.env.SMTP_HOST,    // e.g., smtp.gmail.com
+    port: process.env.SMTP_PORT,    // e.g., 465
     auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
+      user: process.env.SMTP_USER,  // registered email
+      pass: process.env.SMTP_PASS,  // app password 
     },
   });
 
