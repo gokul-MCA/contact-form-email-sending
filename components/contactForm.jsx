@@ -55,7 +55,7 @@ const ContactForm = () => {
   return (
     <section className="mt-16">
       <div className="flex flex-col items-center justify-center px-4 py-6 lg:py-3">
-        <h1 className="font-bold text-2xl mt-8">
+        <h1 className="font-bold text-2xl mt-8 text-secondary">
           Contact Us - React Hook Form
         </h1>
         <div className="my-12">

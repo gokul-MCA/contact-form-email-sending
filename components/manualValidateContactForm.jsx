@@ -73,7 +73,7 @@ const ManualValidateContactForm = () => {
   return (
     <section className="mt-16">
       <div className="flex flex-col items-center justify-center  px-4 py-6 lg:py-3 ">
-        <h1 className="font-bold text-2xl mt-8">Contact Us - Manual Validation using State Management</h1>
+        <h1 className="font-bold text-2xl mt-8 text-secondary">Contact Us - Manual Validation using State Management</h1>
         <div className="my-12">
           {/* form and validation */}
           <form
