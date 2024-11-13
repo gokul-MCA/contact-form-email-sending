@@ -55,6 +55,10 @@ This project demonstrates how to send contact emails using various methods and t
    
    - In the root of the project, create a .env.local file and add the following environment variables.
  ----------------------------------------
+- Common Setup:
+  - EMAIL=receiver_email (or) your_email
+  - NEXTAUTH_URL=http://localhost:3000
+
 - For SMTP:
   - SMTP_HOST=your_smtp_host        
   - SMTP_PORT=your_smtp_port          
