@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
             alt="logo"
             height="60"
             width="60"
-            className="absolute top-10 left-10 border rounded-lg "
+            className="absolute top-5 left-5 border rounded-lg w-12 h-12 lg:h-16 lg:w-16 md:top-10 md:left-10 "
           />
         </Link>
         {children}

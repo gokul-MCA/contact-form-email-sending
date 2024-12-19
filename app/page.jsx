@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="p-10 min-h-screen bg-gray-50 flex flex-col items-center justify-center">
+    <div className="p-10 min-h-screen bg-gray-50 flex flex-col items-center justify-center mt-12 md:mt-14 lg:mt-4 ">
       <h1 className="text-4xl font-extrabold text-center text-dominant mb-8">
         Welcome to the Modern Form Handling Showcase
       </h1>
