@@ -4,9 +4,8 @@
 
 
 :root {
-  --bg-color: #ffffff ; /* Dark background #121212 */
-  --text-color: #121212;
-
+  --bg-color: #f4f4f4; /* Light background */
+  --text-color: #121212; /* Dark text */
   --dominant: #52B788; 
   --primary: #D8F3DC;
   --secondary: #1B4332;
@@ -15,5 +14,11 @@
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
-  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  @apply font-inter;
+}
+
+
+h1,h2,h3,h4,h5,h6 {
+  @apply font-merri;
 }

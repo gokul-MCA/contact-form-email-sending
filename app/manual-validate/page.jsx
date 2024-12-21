@@ -1,10 +1,8 @@
-import ManualValidateContactForm from '../../components/manualValidateContactForm'
+import ManualValidateContactForm from "@/components/manualValidateContactForm"
 
 const ManualValidate = () => {
   return (
-    <div>
-        <ManualValidateContactForm/>
-    </div>
+    <ManualValidateContactForm/>
   )
 }
 

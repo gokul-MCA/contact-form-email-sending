@@ -8,11 +8,11 @@ import React, { useState } from "react";
 const ManualValidateContactForm = () => {
   const [formData, setFormData] = useState({ name:"", email: "", message: "" });
   const [errors, setErrors] = useState({});
-  const [submit, setSubmit] = useState(0);
+  const [submit, setSubmit] = useState("");
   const [status, setStatus] = useState("");
 
 
-  const namePattern = /^[a-zA-Z\s]{2,}$/;
+  const namePattern = /^[a-zA-Z'-\s]{2,}$/;
   const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   const handleChange = (e) => {
@@ -47,22 +47,27 @@ const ManualValidateContactForm = () => {
     event.preventDefault();
 
     if(validateForm()){
-      setSubmit(1);
+      setSubmit("Sending");
     try {
       const response = await fetch("/api/sendemail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
+      
       if (response.ok) {
-        setSubmit(0)
+        setSubmit("Sent")
         setStatus("Successfully sent");
-        setFormData({ name: "", email: "", message: "" }); // Reset form
+        setTimeout(()=>{
+          setFormData({ name: "", email: "", message: "" }); // Reset form
+          setSubmit("")
+        },2000)
       } else {
+        setSubmit("Retry");
         setStatus('Failed to send email!');
       }
     } catch (error) {
-      console.error("Error:", error);
+      setSubmit("Retry")
       setStatus('An error occurred.');
     }
     setTimeout(() => {
@@ -85,6 +90,7 @@ const ManualValidateContactForm = () => {
           md:w-[380px] md:gap-6 md:p-8
           lg:w-[500px] lg:gap-8"
           >
+
              {/* name */}
              <div className="flex flex-col gap-1 md:gap-2">
               <label
@@ -98,12 +104,14 @@ const ManualValidateContactForm = () => {
                 name="name"
                 className="bg-white text-black text-sm outline-none h-8 
               rounded-lg indent-2 caret-dominant p-1 
-              border-2 active:border-dominant hover:border-dominant lg:h-10"
+              border-2 active:border-dominant hover:border-dominant lg:h-10 lg:text-lg "
                 value={formData.name}
                 onChange={handleChange}
               />
               {errors.name && <span className="text-[8px] md:text-xs indent-0 lg:indent-2 text-red-600">{errors.name}</span>}
             </div>
+             {/* end of name */}
+
             {/* email */}
             <div className="flex flex-col gap-1 md:gap-2">
               <label
@@ -117,12 +125,14 @@ const ManualValidateContactForm = () => {
                 name="email"
                 className="bg-white text-black text-sm outline-none h-8 
               rounded-lg indent-2 caret-dominant p-1 
-              border-2 active:border-dominant hover:border-dominant lg:h-10"
+              border-2 active:border-dominant hover:border-dominant lg:h-10 lg:text-lg "
                 value={formData.email}
                 onChange={handleChange}
               />
               {errors.email && <span className="text-[8px] md:text-xs indent-0 lg:indent-2 text-red-600">{errors.email}</span>}
             </div>
+             {/* end of email */}
+
             {/* message */}
             <div className="flex flex-col gap-1 md:gap-2">
               <label
@@ -136,27 +146,28 @@ const ManualValidateContactForm = () => {
                 id="message"
                 className="bg-white text-black text-sm outline-none h-28
               rounded-lg indent-2 caret-dominant p-1 pt-2 
-              border-2 active:border-dominant hover:border-dominant lg:h-32"
+              border-2 active:border-dominant hover:border-dominant lg:h-32 lg:text-lg "
                 value={formData.message}
                 onChange={handleChange}
               ></textarea>
               {errors.message && <span className="text-[8px] md:text-xs indent-0 lg:indent-2 text-red-600">{errors.message}</span>}
             </div>
+             {/* end of message */}
+
             {/* submit */}
             <button
               type="submit"
-              disabled={submit}
               className="bg-dominant text-black rounded p-2 px-4 text-sm font-semibold
             border-2 border-dominant hover:border-secondary hover:text-secondary
             transition-colors duration-300 ease-in-out
             active:transform active:scale-95 active:transition-all lg:text-base"
               aria-label="Submit your message"
             >
-              {submit? (<>Sending...</>):(<>Send</>)}
+              {submit? submit:"Send"}
             </button>
-          </form>
+             {/* end of submit button */}
 
-            {/* status after send succesfully email */}
+          </form>
           {status}
         </div>
       </div>

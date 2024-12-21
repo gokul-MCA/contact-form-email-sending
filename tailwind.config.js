@@ -14,6 +14,10 @@ module.exports = {
         primary: 'var(--primary)',
         secondary: 'var(--secondary)',
       },
+      fontFamily:{
+        inter:['var(--font-inter)'],
+        merri:['var(--font-merriweather)'],
+      },
     },
   },
   plugins: [],

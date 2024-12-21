@@ -1,18 +1,19 @@
-import localFont from "next/font/local";
 import "./globals.css";
 import Image from "next/image";
 import Link from "next/link";
+import {Merriweather, Inter} from 'next/font/google';
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+const inter = Inter({
+  subsets: ['latin'],
+  weight:['400','700','900'],
+  variable:'--font-inter'
+})
+const merri = Merriweather({
+  subsets: ['latin'],
+  weight: ['400','700','900'],
+  variable:'--font-merriweather' 
+})
+
 
 export const metadata = {
   title: "Contact Email Sending - React & Node.js Showcase",
@@ -24,17 +25,20 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+      {/* <link rel="icon" href="/favicon.ico" sizes="any" /> */}
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.variable} ${merri.variable} antialiased `}
       >
         <Link href="/">
-          <Image
+          {/* <Image
             src="/favicon.ico"
             alt="logo"
             height="60"
             width="60"
             className="absolute top-5 left-5 border rounded-lg w-12 h-12 lg:h-16 lg:w-16 md:top-10 md:left-10 "
-          />
+          /> */}
         </Link>
         {children}
       </body>

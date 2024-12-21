@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="p-10 min-h-screen bg-gray-50 flex flex-col items-center justify-center mt-12 md:mt-14 lg:mt-4 ">
+    <div className="p-10 min-h-screen  flex flex-col items-center justify-center mt-12 md:mt-14 lg:mt-4 ">
       <h1 className="text-4xl font-extrabold text-center text-dominant mb-8">
         Welcome to the Modern Form Handling Showcase
       </h1>
@@ -11,7 +11,7 @@ export default function Home() {
         <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-secondary">
           React Hook Form + Resend + Axios
         </h2>
-        <p className="text-gray-600 mb-6">
+        <p className="text-gray-600 mb-6 ">
           React Hook Form (RHF) simplifies form handling and validation in React
           apps with minimal re-renders. When integrated with the Resend API for
           email notifications, RHF collects and validates form data, while Axios
@@ -20,10 +20,10 @@ export default function Home() {
           solution for form management and user communication.
         </p>
         <Link
-          href="/react-hook"
+          href="/reactHook-validate"
           className="text-white bg-secondary px-6 py-3 rounded-lg hover:bg-black transition duration-200"
         >
-          Learn More
+          Click here
         </Link>
       </div>
 
@@ -45,13 +45,13 @@ export default function Home() {
           href="/manual-validate"
           className="text-white bg-secondary px-6 py-3 rounded-lg hover:bg-black transition duration-200"
         >
-          Learn More
+          Click here
         </Link>
       </div>
 
       <div className="mt-12 text-center">
         <p className="text-gray-500">
-          Built with love using 💚{" "}
+          Built with love using <span className="animate-pulse ">💚{" "}</span>
           <span className="font-semibold">Next.js and React</span>
         </p>
       </div>
