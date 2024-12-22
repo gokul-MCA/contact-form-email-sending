@@ -2,13 +2,14 @@
 // npm i resend
 
 import { Resend } from "resend";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import { FormData } from '@/types/formdata';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function POST(req) {
+export async function POST(req: NextRequest): Promise<NextResponse> {
   try {
-    const { name, email, message } = await req.json();
+    const { name, email, message }: FormData = await req.json();
 
     // Validate inputs
     if (!name || typeof name !== "string") {

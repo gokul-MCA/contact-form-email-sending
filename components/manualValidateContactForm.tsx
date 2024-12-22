@@ -3,53 +3,59 @@
 
 
 "use client";
-import React, { useState } from "react";
+import { FormData, FormErrors } from "@/types/formdata";
+import React, { ChangeEvent, useState } from "react";
 
-const ManualValidateContactForm = () => {
-  const [formData, setFormData] = useState({ name:"", email: "", message: "" });
-  const [errors, setErrors] = useState({});
-  const [submit, setSubmit] = useState("");
-  const [status, setStatus] = useState("");
+
+const ManualValidateContactForm: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({ name:"", email: "", message: "" });
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [submit, setSubmit] = useState<string>("");
+  const [status, setStatus] = useState<string>("");
 
 
   const namePattern = /^[a-zA-Z'-\s]{2,}$/;
   const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const validateForm = () =>{
-    let newErrors = {};
+  const validateForm = (): boolean => {
+    let newErrors: FormErrors = {};
+
     if(!formData.name){
       newErrors.name='Name is required'
     }
     else if(!namePattern.test(formData.name)){
       newErrors.name='Name must contain only alphabetic characters and spaces.'
     }
+
     if(!formData.email){
       newErrors.email='Email is required'
     }
     else if(!emailPattern.test(formData.email)){
       newErrors.email='Please enter a valid email address.'
     }
+
     if(!formData.message){
       newErrors.message='Message is required'
     }
     else if(((formData.message).split(' ')).length<6){
       newErrors.message='Please enter a message with at least 6 words.'
     }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0; // Return true if no errors
-  }
+  };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if(validateForm()){
       setSubmit("Sending");
     try {
-      const response = await fetch("/api/sendemail", {
+      const response = await fetch("/api/sendNodeMailer", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -66,19 +72,19 @@ const ManualValidateContactForm = () => {
         setSubmit("Retry");
         setStatus('Failed to send email!');
       }
-    } catch (error) {
+    } catch (error: any) {
       setSubmit("Retry")
       setStatus('An error occurred.');
     }
     setTimeout(() => {
       setStatus('');
-    }, 2000); // Hide notification after 3 seconds
+    }, 2000); // Hide notification after 2 seconds
   };   
 }
   return (
-    <section className="mt-16">
+    <section className="mt-10">
       <div className="flex flex-col items-center justify-center  px-4 py-6 lg:py-3 ">
-        <h1 className="font-bold text-2xl mt-8 text-secondary">Contact Us - Manual Validation using State Management</h1>
+        <h1 className="font-bold text-2xl text-secondary">Contact Us - Manual Validation using State Management</h1>
         <div className="my-12">
           {/* form and validation */}
           <form
@@ -102,13 +108,16 @@ const ManualValidateContactForm = () => {
               <input
                 id="name"
                 name="name"
+                // autoFocus
                 className="bg-white text-black text-sm outline-none h-8 
               rounded-lg indent-2 caret-dominant p-1 
               border-2 active:border-dominant hover:border-dominant lg:h-10 lg:text-lg "
                 value={formData.name}
                 onChange={handleChange}
               />
-              {errors.name && <span className="text-[8px] md:text-xs indent-0 lg:indent-2 text-red-600">{errors.name}</span>}
+              {errors.name && 
+              <span className="text-[8px] md:text-sm indent-0 lg:indent-2 text-red-500">{errors.name}
+              </span>}
             </div>
              {/* end of name */}
 
@@ -129,7 +138,7 @@ const ManualValidateContactForm = () => {
                 value={formData.email}
                 onChange={handleChange}
               />
-              {errors.email && <span className="text-[8px] md:text-xs indent-0 lg:indent-2 text-red-600">{errors.email}</span>}
+              {errors.email && <span className="text-[8px] md:text-sm indent-0 lg:indent-2 text-red-500">{errors.email}</span>}
             </div>
              {/* end of email */}
 
@@ -150,7 +159,7 @@ const ManualValidateContactForm = () => {
                 value={formData.message}
                 onChange={handleChange}
               ></textarea>
-              {errors.message && <span className="text-[8px] md:text-xs indent-0 lg:indent-2 text-red-600">{errors.message}</span>}
+              {errors.message && <span className="text-[8px] md:text-sm indent-0 lg:indent-2 text-red-500">{errors.message}</span>}
             </div>
              {/* end of message */}
 

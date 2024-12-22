@@ -7,21 +7,18 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { FormData } from "@/types/formdata";
 
-const ReactHookValidateContactForm = () => {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
-  const [submit, setSubmit] = useState("");
-  const [status, setStatus] = useState("");
 
-  const onSubmit = async (data) => {
+const ReactHookValidateContactForm: React.FC = () => {
+  const { register, handleSubmit, reset, formState: { errors }, } = useForm<FormData>();
+  const [submit, setSubmit] = useState<string>("");
+  const [status, setStatus] = useState<string>("");
+
+  const onSubmit = async (data: FormData) => {
     setSubmit("Sending"); 
     try {
-      const response = await axios.post("api/sendEmailer", data, {
+      const response = await axios.post("api/sendResend", data, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -40,7 +37,7 @@ const ReactHookValidateContactForm = () => {
         setStatus("Failed to send email!");
         // console.log("Error sending email:", response.data);
       }
-    } catch (error) {
+    } catch (error: any) {
       setSubmit("Retry")
       setStatus("An error occurred.");
       if (error.response) {
@@ -60,9 +57,9 @@ const ReactHookValidateContactForm = () => {
   };
 
   return (
-    <section className="mt-16">
+    <section className="mt-10">
       <div className="flex flex-col items-center justify-center px-4 py-6 lg:py-3">
-        <h1 className="font-bold text-2xl mt-8 text-secondary">
+        <h1 className="font-bold text-2xl text-secondary">
           Contact Us - React Hook Form
         </h1>
         <div className="my-12">
@@ -100,7 +97,7 @@ const ReactHookValidateContactForm = () => {
               />
 
               {errors.name && (
-                <span className="text-red-500 text-sm">
+                <span className="text-red-500 text-[8px] md:text-sm indent-0 lg:indent-2 ">
                   {errors.name.message}
                 </span>
               )}
@@ -131,7 +128,7 @@ const ReactHookValidateContactForm = () => {
               />
 
               {errors.email && (
-                <span className="text-red-500 text-sm">
+                <span className="text-red-500 text-[8px] md:text-sm indent-0 lg:indent-2 ">
                   {errors.email.message}
                 </span>
               )}
@@ -167,7 +164,7 @@ const ReactHookValidateContactForm = () => {
               ></textarea>
 
               {errors.message && (
-                <span className="text-red-500 text-sm">
+                <span className="text-red-500 text-[8px] md:text-sm indent-0 lg:indent-2 ">
                   {errors.message.message}
                 </span>
               )}

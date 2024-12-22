@@ -11,6 +11,10 @@
   --secondary: #1B4332;
 }
 
+*{
+  box-sizing: border-box;
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--text-color);

@@ -2,13 +2,13 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="p-10 min-h-screen  flex flex-col items-center justify-center mt-12 md:mt-14 lg:mt-4 ">
-      <h1 className="text-4xl font-extrabold text-center text-dominant mb-8">
+    <div className="p-2 flex flex-col items-center justify-center m-6 ">
+      <h1 className="text-3xl lg:text-4xl font-extrabold text-center text-dominant mb-8 m-2 ">
         Welcome to the Modern Form Handling Showcase
       </h1>
 
-      <div className="max-w-4xl w-full bg-white p-8 rounded-lg shadow-lg mb-8 hover:shadow-2xl hover:shadow-primary">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-secondary">
+      <div className="max-w-4xl w-full bg-white p-8 rounded-lg shadow-lg mb-8 hover:shadow-2xl hover:shadow-primary ">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-secondary ">
           React Hook Form + Resend + Axios
         </h2>
         <p className="text-gray-600 mb-6 ">
@@ -21,17 +21,17 @@ export default function Home() {
         </p>
         <Link
           href="/reactHook-validate"
-          className="text-white bg-secondary px-6 py-3 rounded-lg hover:bg-black transition duration-200"
+          className="text-white bg-secondary px-6 py-3 rounded-lg hover:bg-green-800 transition duration-200 "
         >
           Click here
         </Link>
       </div>
 
-      <div className="max-w-4xl w-full bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl hover:shadow-primary">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-secondary">
+      <div className="max-w-4xl w-full bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl hover:shadow-primary m-2 ">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-secondary ">
           React Manual Validation + Nodemailer (SMTP) + Fetch
         </h2>
-        <p className="text-gray-600 mb-6">
+        <p className="text-gray-600 mb-6 ">
           Manually validating form inputs in React gives you complete control
           over data integrity before submission. Once the form is validated, you
           can use Nodemailer, a popular Node.js library, to send emails via SMTP
@@ -43,18 +43,12 @@ export default function Home() {
         </p>
         <Link
           href="/manual-validate"
-          className="text-white bg-secondary px-6 py-3 rounded-lg hover:bg-black transition duration-200"
+          className="text-white bg-secondary px-6 py-3 rounded-lg hover:bg-green-800 transition duration-200 "
         >
           Click here
         </Link>
       </div>
 
-      <div className="mt-12 text-center">
-        <p className="text-gray-500">
-          Built with love using <span className="animate-pulse ">💚{" "}</span>
-          <span className="font-semibold">Next.js and React</span>
-        </p>
-      </div>
     </div>
   );
 }
