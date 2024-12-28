@@ -3,7 +3,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import { FormData } from '@/types/formdata';
+import { FormData } from "@/types/formdata";
 
 
 export async function POST(req: NextRequest): Promise<NextResponse> {

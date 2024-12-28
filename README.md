@@ -89,23 +89,29 @@ This project demonstrates how to send contact emails using various methods and t
 
 .
 └── contact-email/
-    ├── app/
-    │   ├── api/
-    │   │   ├── sendemail/                 # Resend email route
-    │   │   │   └── route.jsx
-    │   │   └── sendEmailer/               # SMTP email route
-    │   │       └── route.jsx
-    │   ├── globals.css                    # Global app styles
-    │   ├── layout.jsx                     # App layout
-    │   ├── page.jsx                       # Main page (contact form or homepage)
-    │   ├── manual-validate/               # Manual validation form page
-    │   │   └── page.jsx
-    │   └── react-hook/                    # React Hook Form-based form page
-    │       └── page.jsx
-    ├── components/
-    │   ├── contactForm.jsx                # React Hook Form contact form
-    │   └── manualValidateContactForm.jsx  # Manual validation contact form
-    └── env/                               # Environment Configuration file
+    ├── public/
+    │   └── favicon.ico
+    ├── src/
+    │   ├── app/
+    │   │   ├── api/
+    │   │   │   ├── sendNodeMailer/
+    │   │   │   │   └── route.tsx
+    │   │   │   └── sendResend/
+    │   │   │       └── route.tsx
+    │   │   ├── manual-validate/
+    │   │   │   └── page.tsx
+    │   │   ├── reactHook-validate/
+    │   │   │   └── page.tsx
+    │   │   ├── layout.tsx
+    │   │   └── page.tsx
+    │   ├── components/
+    │   │   ├── manualValidateContactForm.tsx
+    │   │   └── reactHookValidateContactForm.tsx
+    │   ├── styles/
+    │   │   └── globals.css
+    │   └── types/
+    │       └── formdata.ts
+    └── env
 
 ```
 

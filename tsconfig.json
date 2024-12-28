@@ -24,9 +24,9 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/components/*":["components/*"],
-      "@/styles/*": ["styles/*"],
-      "@/types/*": ["types/*"]
+      "@/components/*":["src/components/*"],
+      "@/styles/*": ["src/styles/*"],
+      "@/types/*": ["src/types/*"]
     }
   },
   "include": [

@@ -53,21 +53,21 @@ export default function RootLayout({
 
           {children}
 
-          <footer className="m-6 ">
-            <p className="text-gray-500 text-center p-2 ">
+          <footer className="m-0 lg:m-6 ">
+            <p className="text-xs md:text-sm lg:text-base text-gray-500 text-center p-2 ">
               Built with love using <span className="animate-pulse ">💚 </span>
               <span className="font-semibold">Next.js and React</span>
             </p>
 
             <span className=" flex justify-center items-center gap-4 p-2 ">
               <a href="https://github.com/gokul-MCA" target="_blank">
-                <GitHubLogoIcon className="h-6 w-6 text-secondary hover:text-dominant " />
+                <GitHubLogoIcon className="h-6 w-6 lg:h-8 lg:w-8 text-secondary hover:text-dominant " />
               </a>
               <a href="https://gokul-b.netlify.app/" target="_blank">
-                <GlobeIcon className="h-6 w-6 text-secondary hover:text-dominant " />
+                <GlobeIcon className="h-6 w-6 lg:h-8 lg:w-8 text-secondary hover:text-dominant " />
               </a>
               <a href="https://www.linkedin.com/in/gokul-b-mca/" target="_blank">
-                <LinkedInLogoIcon className="h-6 w-6 text-secondary hover:text-dominant " />
+                <LinkedInLogoIcon className="h-6 w-6 lg:h-8 lg:w-8  text-secondary hover:text-dominant " />
               </a>
             </span>
           </footer>

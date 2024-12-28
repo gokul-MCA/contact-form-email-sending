@@ -1,4 +1,4 @@
-import ReactHookValidateContactForm from '@/components/reactHookValidateContactForm'
+import ReactHookValidateContactForm from "@/components/reactHookValidateContactForm"
 
 const ReactHookValidate = () => {
   return (

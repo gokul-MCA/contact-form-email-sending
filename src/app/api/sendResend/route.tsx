@@ -3,7 +3,8 @@
 
 import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
-import { FormData } from '@/types/formdata';
+import { FormData } from "@/types/formdata";
+
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 

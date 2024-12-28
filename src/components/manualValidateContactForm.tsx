@@ -3,8 +3,8 @@
 
 
 "use client";
-import { FormData, FormErrors } from "@/types/formdata";
 import React, { ChangeEvent, useState } from "react";
+import { FormData, FormErrors } from "@/types/formdata";
 
 
 const ManualValidateContactForm: React.FC = () => {
@@ -63,14 +63,14 @@ const ManualValidateContactForm: React.FC = () => {
       
       if (response.ok) {
         setSubmit("Sent")
-        setStatus("Successfully sent");
+        setStatus("Successfully sent ✅");
         setTimeout(()=>{
           setFormData({ name: "", email: "", message: "" }); // Reset form
           setSubmit("")
         },2000)
       } else {
         setSubmit("Retry");
-        setStatus('Failed to send email!');
+        setStatus('Failed to send email ❌');
       }
     } catch (error: any) {
       setSubmit("Retry")
@@ -82,10 +82,12 @@ const ManualValidateContactForm: React.FC = () => {
   };   
 }
   return (
-    <section className="mt-10">
+    <section className="mt-10 ">
       <div className="flex flex-col items-center justify-center  px-4 py-6 lg:py-3 ">
-        <h1 className="font-bold text-2xl text-secondary">Contact Us - Manual Validation using State Management</h1>
-        <div className="my-12">
+        <h1 className="font-bold text-lg md:text-xl lg:text-2xl text-secondary px-6 ">
+          Contact Us - Manual Validation using State Management
+        </h1>
+        <div className="my-12 ">
           {/* form and validation */}
           <form
             onSubmit={handleSubmit}
@@ -94,14 +96,14 @@ const ManualValidateContactForm: React.FC = () => {
           hover:shadow-lg active:bg-primary
           transition-colors duration-300 ease-in-out 
           md:w-[380px] md:gap-6 md:p-8
-          lg:w-[500px] lg:gap-8"
+          lg:w-[500px] lg:gap-8 "
           >
 
              {/* name */}
-             <div className="flex flex-col gap-1 md:gap-2">
+             <div className="flex flex-col gap-1 md:gap-2 ">
               <label
                 htmlFor="name"
-                className="font-semibold pointer-events-none"
+                className="font-semibold pointer-events-none "
               >
                 Name
               </label>
@@ -116,16 +118,16 @@ const ManualValidateContactForm: React.FC = () => {
                 onChange={handleChange}
               />
               {errors.name && 
-              <span className="text-[8px] md:text-sm indent-0 lg:indent-2 text-red-500">{errors.name}
+              <span className="text-[8px] md:text-sm indent-0 lg:indent-2 text-red-500 ">{errors.name}
               </span>}
             </div>
              {/* end of name */}
 
             {/* email */}
-            <div className="flex flex-col gap-1 md:gap-2">
+            <div className="flex flex-col gap-1 md:gap-2 ">
               <label
                 htmlFor="email"
-                className="font-semibold pointer-events-none"
+                className="font-semibold pointer-events-none "
               >
                 Email
               </label>
@@ -138,15 +140,15 @@ const ManualValidateContactForm: React.FC = () => {
                 value={formData.email}
                 onChange={handleChange}
               />
-              {errors.email && <span className="text-[8px] md:text-sm indent-0 lg:indent-2 text-red-500">{errors.email}</span>}
+              {errors.email && <span className="text-[8px] md:text-sm indent-0 lg:indent-2 text-red-500 ">{errors.email}</span>}
             </div>
              {/* end of email */}
 
             {/* message */}
-            <div className="flex flex-col gap-1 md:gap-2">
+            <div className="flex flex-col gap-1 md:gap-2 ">
               <label
                 htmlFor="message"
-                className="font-semibold pointer-events-none"
+                className="font-semibold pointer-events-none "
               >
                 How can we help?
               </label>
@@ -159,7 +161,7 @@ const ManualValidateContactForm: React.FC = () => {
                 value={formData.message}
                 onChange={handleChange}
               ></textarea>
-              {errors.message && <span className="text-[8px] md:text-sm indent-0 lg:indent-2 text-red-500">{errors.message}</span>}
+              {errors.message && <span className="text-[8px] md:text-sm indent-0 lg:indent-2 text-red-500 ">{errors.message}</span>}
             </div>
              {/* end of message */}
 
@@ -169,7 +171,7 @@ const ManualValidateContactForm: React.FC = () => {
               className="bg-dominant text-black rounded p-2 px-4 text-sm font-semibold
             border-2 border-dominant hover:border-secondary hover:text-secondary
             transition-colors duration-300 ease-in-out
-            active:transform active:scale-95 active:transition-all lg:text-base"
+            active:transform active:scale-95 active:transition-all lg:text-base "
               aria-label="Submit your message"
             >
               {submit? submit:"Send"}

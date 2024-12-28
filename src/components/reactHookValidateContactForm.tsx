@@ -25,7 +25,7 @@ const ReactHookValidateContactForm: React.FC = () => {
       });
       if (response.status === 200) {
         setSubmit("Sent")
-        setStatus("Successfully sent");
+        setStatus("Successfully sent ✅");
         // console.log("Email sent successfully:", response.data);
         //after the form successfully submitted we need to reset the form and submit status
         setTimeout(()=>{
@@ -34,7 +34,7 @@ const ReactHookValidateContactForm: React.FC = () => {
         },2000)
       } else {
         setSubmit("Retry")
-        setStatus("Failed to send email!");
+        setStatus("Failed to send email ❌");
         // console.log("Error sending email:", response.data);
       }
     } catch (error: any) {
@@ -57,12 +57,12 @@ const ReactHookValidateContactForm: React.FC = () => {
   };
 
   return (
-    <section className="mt-10">
-      <div className="flex flex-col items-center justify-center px-4 py-6 lg:py-3">
-        <h1 className="font-bold text-2xl text-secondary">
+    <section className="mt-10 ">
+      <div className="flex flex-col items-center justify-center px-4 py-6 lg:py-3 ">
+        <h1 className="font-bold text-lg md:text-xl lg:text-2xl text-secondary py-6 ">
           Contact Us - React Hook Form
         </h1>
-        <div className="my-12">
+        <div className="my-12 ">
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="min-w-72 w-auto flex flex-col gap-4 p-6 rounded-lg bg-primary 
@@ -70,14 +70,14 @@ const ReactHookValidateContactForm: React.FC = () => {
             hover:shadow-lg active:bg-primary
             transition-colors duration-300 ease-in-out 
             md:w-[380px] md:gap-6 md:p-8 
-            lg:w-[500px] lg:gap-8"
+            lg:w-[500px] lg:gap-8 "
           >
 
             {/* name */}
-            <div className="flex flex-col gap-1 md:gap-2">
+            <div className="flex flex-col gap-1 md:gap-2 ">
               <label
                 htmlFor="name"
-                className="font-semibold pointer-events-none"
+                className="font-semibold pointer-events-none "
               >
                 Name
               </label>
@@ -105,10 +105,10 @@ const ReactHookValidateContactForm: React.FC = () => {
             {/* end of name */}
 
             {/* email */}
-            <div className="flex flex-col gap-1 md:gap-2">
+            <div className="flex flex-col gap-1 md:gap-2 ">
               <label
                 htmlFor="email"
-                className="font-semibold pointer-events-none"
+                className="font-semibold pointer-events-none "
               >
                 Email
               </label>
@@ -136,10 +136,10 @@ const ReactHookValidateContactForm: React.FC = () => {
             {/* end of email */}
 
             {/* message */}
-            <div className="flex flex-col gap-1 md:gap-2">
+            <div className="flex flex-col gap-1 md:gap-2 ">
               <label
                 htmlFor="message"
-                className="font-semibold pointer-events-none"
+                className="font-semibold pointer-events-none "
               >
                 How can we help?
               </label>
@@ -177,7 +177,7 @@ const ReactHookValidateContactForm: React.FC = () => {
               className="bg-dominant text-black rounded p-2 px-4 text-sm font-semibold
             border-2 border-dominant hover:border-secondary hover:text-secondary
             transition-colors duration-300 ease-in-out
-            active:transform active:scale-95 active:transition-all lg:text-base"
+            active:transform active:scale-95 active:transition-all lg:text-base "
               aria-label="Submit your message"
             >
             {submit? submit :"Send"}
