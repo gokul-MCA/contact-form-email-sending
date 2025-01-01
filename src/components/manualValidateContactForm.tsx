@@ -82,12 +82,12 @@ const ManualValidateContactForm: React.FC = () => {
   };   
 }
   return (
-    <section className="mt-10 ">
-      <div className="flex flex-col items-center justify-center  px-4 py-6 lg:py-3 ">
+    <section>
+      <div className="flex flex-col items-center justify-center  px-4 py-4 lg:py-3 ">
         <h1 className="font-bold text-lg md:text-xl lg:text-2xl text-secondary px-6 ">
           Contact Us - Manual Validation using State Management
         </h1>
-        <div className="my-12 ">
+        <div className="my-6 md:my-8 ">
           {/* form and validation */}
           <form
             onSubmit={handleSubmit}
@@ -118,7 +118,7 @@ const ManualValidateContactForm: React.FC = () => {
                 onChange={handleChange}
               />
               {errors.name && 
-              <span className="text-[8px] md:text-sm indent-0 lg:indent-2 text-red-500 ">{errors.name}
+              <span className="text-sm indent-0 lg:indent-2 text-red-500 ">{errors.name}
               </span>}
             </div>
              {/* end of name */}
@@ -140,7 +140,7 @@ const ManualValidateContactForm: React.FC = () => {
                 value={formData.email}
                 onChange={handleChange}
               />
-              {errors.email && <span className="text-[8px] md:text-sm indent-0 lg:indent-2 text-red-500 ">{errors.email}</span>}
+              {errors.email && <span className="text-sm indent-0 lg:indent-2 text-red-500 ">{errors.email}</span>}
             </div>
              {/* end of email */}
 
@@ -161,7 +161,7 @@ const ManualValidateContactForm: React.FC = () => {
                 value={formData.message}
                 onChange={handleChange}
               ></textarea>
-              {errors.message && <span className="text-[8px] md:text-sm indent-0 lg:indent-2 text-red-500 ">{errors.message}</span>}
+              {errors.message && <span className="text-sm indent-0 lg:indent-2 text-red-500 ">{errors.message}</span>}
             </div>
              {/* end of message */}
 

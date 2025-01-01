@@ -1,6 +1,6 @@
-# Contact Email 📪📬📭 Sending - (Manual Validation + SMTP + Fetch) & (React Hook Form + Resend + Axios)
+# Contact Form Email 📪📬📭 Sending - (Manual Validation + SMTP + Fetch) & (React Hook Form + Resend + Axios)
 
-This project demonstrates how to send contact emails using various methods and technologies, offering a flexible and comprehensive solution for both manual form validation and React Hook Form integration. The repository includes examples of email sending using traditional SMTP with Nodemailer and modern Resend API, all tied together with frontend form validation using React Hook Form and Axios for API requests.
+This project demonstrates how to send contact form emails using various methods and technologies, offering a flexible and comprehensive solution for both manual form validation and React Hook Form integration. The repository includes examples of email sending using traditional SMTP with Nodemailer and modern Resend API, all tied together with frontend form validation using React Hook Form and Axios for API requests.
 
 
 ## ✨ Features
@@ -43,8 +43,8 @@ This project demonstrates how to send contact emails using various methods and t
 
 1. **Clone the repository**
 
-   - git clone https://github.com/your-username/contact-email-sending-nextjs.git
-   - cd contact-email-sending-nextjs
+   - git clone https://github.com/gokul-MCA/contact-form-email-sending.git
+   - cd contact-form-email-sending
 
 2. **Install Dependency**
    
@@ -60,8 +60,8 @@ This project demonstrates how to send contact emails using various methods and t
   - NEXTAUTH_URL=http://localhost:3000
 
 - For SMTP:
-  - SMTP_HOST=your_smtp_host        
-  - SMTP_PORT=your_smtp_port          
+  <!-- - SMTP_HOST=your_smtp_host        
+  - SMTP_PORT=your_smtp_port           -->
   - SMTP_USER=your_smtp_username    
   - SMTP_PASS=your_smtp_password    
 

@@ -57,17 +57,17 @@ const ReactHookValidateContactForm: React.FC = () => {
   };
 
   return (
-    <section className="mt-10 ">
+    <section>
       <div className="flex flex-col items-center justify-center px-4 py-6 lg:py-3 ">
-        <h1 className="font-bold text-lg md:text-xl lg:text-2xl text-secondary py-6 ">
+        <h1 className="font-bold text-lg md:text-xl lg:text-2xl text-secondary px-6 ">
           Contact Us - React Hook Form
         </h1>
-        <div className="my-12 ">
+        <div className="my-6 md:my-8 ">
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="min-w-72 w-auto flex flex-col gap-4 p-6 rounded-lg bg-primary 
             border-2 hover:border-dominant 
-            hover:shadow-lg active:bg-primary
+            hover:shadow-lg active:bg-primary 
             transition-colors duration-300 ease-in-out 
             md:w-[380px] md:gap-6 md:p-8 
             lg:w-[500px] lg:gap-8 "
@@ -97,7 +97,7 @@ const ReactHookValidateContactForm: React.FC = () => {
               />
 
               {errors.name && (
-                <span className="text-red-500 text-[8px] md:text-sm indent-0 lg:indent-2 ">
+                <span className="text-red-500 text-sm indent-0 lg:indent-2 ">
                   {errors.name.message}
                 </span>
               )}
@@ -128,7 +128,7 @@ const ReactHookValidateContactForm: React.FC = () => {
               />
 
               {errors.email && (
-                <span className="text-red-500 text-[8px] md:text-sm indent-0 lg:indent-2 ">
+                <span className="text-red-500 text-sm indent-0 lg:indent-2 ">
                   {errors.email.message}
                 </span>
               )}
@@ -164,7 +164,7 @@ const ReactHookValidateContactForm: React.FC = () => {
               ></textarea>
 
               {errors.message && (
-                <span className="text-red-500 text-[8px] md:text-sm indent-0 lg:indent-2 ">
+                <span className="text-red-500 text-sm indent-0 lg:indent-2 ">
                   {errors.message.message}
                 </span>
               )}
