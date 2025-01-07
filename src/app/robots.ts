@@ -1,5 +1,5 @@
-import type { MetadataRoute } from 'next'
- 
+import type { MetadataRoute } from 'next';
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
@@ -8,5 +8,5 @@ export default function robots(): MetadataRoute.Robots {
       disallow: '/private/',
     },
     sitemap: 'http://localhost:3000/sitemap.xml',
-  }
+  };
 }

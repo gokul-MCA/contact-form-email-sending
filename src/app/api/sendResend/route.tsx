@@ -1,10 +1,9 @@
 // Resend for sending mail here
 // npm i resend
 
-import { Resend } from "resend";
-import { NextRequest, NextResponse } from "next/server";
-import { FormData } from "@/types/formdata";
-
+import { Resend } from 'resend';
+import { NextRequest, NextResponse } from 'next/server';
+import { FormData } from '@/types/formdata';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -13,17 +12,17 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     const { name, email, message }: FormData = await req.json();
 
     // Validate inputs
-    if (!name || typeof name !== "string") {
-      console.error("Invalid name");
-      return NextResponse.json({ error: "Invalid name" }, { status: 400 });
+    if (!name || typeof name !== 'string') {
+      console.error('Invalid name');
+      return NextResponse.json({ error: 'Invalid name' }, { status: 400 });
     }
-    if (!email || typeof email !== "string") {
-      console.error("Invalid email");
-      return NextResponse.json({ error: "Invalid email" }, { status: 400 });
+    if (!email || typeof email !== 'string') {
+      console.error('Invalid email');
+      return NextResponse.json({ error: 'Invalid email' }, { status: 400 });
     }
-    if (!message || typeof message !== "string") {
-      console.error("Invalid message");
-      return NextResponse.json({ error: "Invalid message" }, { status: 400 });
+    if (!message || typeof message !== 'string') {
+      console.error('Invalid message');
+      return NextResponse.json({ error: 'Invalid message' }, { status: 400 });
     }
 
     const htmlContent = `
@@ -46,7 +45,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 `;
 
     const { data, error } = await resend.emails.send({
-      from: "Contact Form <onboarding@resend.dev>",
+      from: 'Contact Form <onboarding@resend.dev>',
       to: process.env.EMAIL, // Replace with your receiver mail (or) your mail to receive email
       subject: `Message from contact form ${name}`,
       replyTo: email,
@@ -54,13 +53,13 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     });
 
     if (error) {
-      console.error("Error sending email:", error);
+      console.error('Error sending email:', error);
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
     return NextResponse.json({ data }, { status: 200 });
   } catch (error) {
-    console.error("Unexpected error:", error);
+    console.error('Unexpected error:', error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

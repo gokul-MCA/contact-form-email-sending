@@ -2,16 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
   --bg-color: #f4f4f4; /* Light background */
   --text-color: #121212; /* Dark text */
-  --dominant: #52B788; 
-  --primary: #D8F3DC;
-  --secondary: #1B4332;
+  --dominant: #52b788;
+  --primary: #d8f3dc;
+  --secondary: #1b4332;
 }
 
-*{
+* {
   box-sizing: border-box;
 }
 
@@ -22,7 +21,11 @@ body {
   @apply font-inter;
 }
 
-
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   @apply font-merri;
 }

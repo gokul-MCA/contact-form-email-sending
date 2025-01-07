@@ -1,17 +1,17 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="p-2 flex flex-col items-center justify-center m-6 ">
-      <h1 className="text-xl md:text-2xl lg:text-3xl font-extrabold text-center text-green-700 mb-8 m-2 first-letter:text-3xl md:first-letter:text-4xl  ">
+    <div className='m-6 flex flex-col items-center justify-center p-2'>
+      <h1 className='m-2 mb-8 text-center text-xl font-extrabold text-green-700 first-letter:text-3xl md:text-2xl md:first-letter:text-4xl lg:text-3xl'>
         Welcome to the Modern Form Handling Showcase
       </h1>
 
-      <div className="max-w-3xl w-full bg-white p-8 rounded-lg shadow-lg mb-8 hover:shadow-2xl hover:shadow-primary ">
-        <h2 className="text-lg md:text-xl font-semibold mb-4 text-[#035E35] ">
+      <div className='mb-8 w-full max-w-3xl rounded-lg bg-white p-8 shadow-lg hover:shadow-2xl hover:shadow-primary'>
+        <h2 className='mb-4 text-lg font-semibold text-[#035E35] md:text-xl'>
           React Hook Form + Resend + Axios
         </h2>
-        <p className="text-xs md:text-sm lg:text-base text-gray-600 mb-4 ">
+        <p className='mb-4 text-xs text-gray-600 md:text-sm lg:text-base'>
           React Hook Form (RHF) simplifies form handling and validation in React
           apps with minimal re-renders. When integrated with the Resend API for
           email notifications, RHF collects and validates form data, while Axios
@@ -20,19 +20,19 @@ export default function Home() {
           solution for form management and user communication.
         </p>
         <Link
-          href="/reactHook-validate"
-          className="text-white hover:bg-secondary px-4 py-2 rounded-lg bg-green-800 transition duration-200 text-sm md:text-base "
+          href='/reactHook-validate'
+          className='rounded-lg bg-green-800 px-4 py-2 text-sm text-white transition duration-200 hover:bg-secondary md:text-base'
         >
-          <span className="sr-only">Click here to visit React Hook Form </span>
+          <span className='sr-only'>Click here to visit React Hook Form </span>
           Click here
         </Link>
       </div>
 
-      <div className="max-w-3xl w-full bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl hover:shadow-primary m-2 ">
-        <h2 className="text-lg md:text-xl font-semibold mb-4 text-[#035E35] ">
+      <div className='m-2 w-full max-w-3xl rounded-lg bg-white p-8 shadow-lg hover:shadow-2xl hover:shadow-primary'>
+        <h2 className='mb-4 text-lg font-semibold text-[#035E35] md:text-xl'>
           React Manual Validation + Nodemailer (SMTP) + Fetch
         </h2>
-        <p className="text-xs md:text-sm lg:text-base text-gray-600 mb-4 ">
+        <p className='mb-4 text-xs text-gray-600 md:text-sm lg:text-base'>
           Manually validating form inputs in React gives you complete control
           over data integrity before submission. Once the form is validated, you
           can use Nodemailer, a popular Node.js library, to send emails via SMTP
@@ -43,10 +43,10 @@ export default function Home() {
           SMTP configuration.
         </p>
         <Link
-          href="/manual-validate"
-          className="text-white hover:bg-secondary px-4 py-2 rounded-lg bg-green-800 transition duration-200 text-sm md:text-base "
+          href='/manual-validate'
+          className='rounded-lg bg-green-800 px-4 py-2 text-sm text-white transition duration-200 hover:bg-secondary md:text-base'
         >
-          <span className="sr-only">
+          <span className='sr-only'>
             Click here to visit React Manual Validation Form
           </span>
           Click here
