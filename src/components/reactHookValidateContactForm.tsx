@@ -21,9 +21,34 @@ const ReactHookValidateContactForm: React.FC = () => {
   const [status, setStatus] = useState<string>('');
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [isVerified, setIsVerified] = useState(false);
+  
+  const handleCaptchaChange = async(token: string | null) => {
+    try {
+      if (token) {
+        const response = await fetch("/api/captcha", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ token }),
+        });
+ 
+        const data = await response.json();
+        setIsVerified(data.success);
+        if (!data.success) setStatus("CAPTCHA verification failed.");
+      }
+    } catch (e) {
+      console.error("CAPTCHA validation failed", e);
+      setIsVerified(false);
+      setStatus("An error occurred with CAPTCHA validation.");
+    }
+  };
 
   const onSubmit = async (data: FormData) => {
-    if (isVerified) {
+    if (!isVerified) {
+      setStatus("Please complete the CAPTCHA.");
+      return;
+  }
       setSubmit('Sending');
       try {
         const response = await axios.post('api/sendResend', data, {
@@ -59,40 +84,11 @@ const ReactHookValidateContactForm: React.FC = () => {
         console.log('Error message:', error.message);
       }
     }
-    setTimeout(() => {
-      setStatus('');
-    }, 2000);
+    finally{setTimeout(() => 
+      setStatus(''), 2000);
   }
-  else{
-    setStatus("Please complete the CAPTCHA.");
-  }
-}
+ };
 
-
-
-  const handleCaptchaChange = (token: string | null) => {
-    handleCaptchaSubmission(token);
-  };
-
-  const handleCaptchaSubmission = async (token: string | null) => {
-    try {
-      if (token) {
-        const response = await fetch("/api/captcha", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ token }),
-        });
-
-        const data = await response.json();
-        setIsVerified(data.success);
-      }
-    } catch (e) {
-      console.error("CAPTCHA validation failed", e);
-      setIsVerified(false);
-    }
-  };
 
   return (
     <section>
@@ -103,7 +99,7 @@ const ReactHookValidateContactForm: React.FC = () => {
         <div className='my-6 md:my-8'>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className='flex w-auto min-w-72 flex-col gap-4 rounded-lg border-2 bg-primary p-6 transition-colors duration-300 ease-in-out hover:border-dominant hover:shadow-lg active:bg-primary md:w-[380px] md:gap-6 md:p-8 lg:w-[500px] lg:gap-8'
+            className='flex w-auto min-w-72 flex-col gap-4 rounded-lg border-2 bg-primary p-4 transition-colors duration-300 ease-in-out hover:border-dominant hover:shadow-lg active:bg-primary md:w-[380px] md:p-8 lg:w-[500px] '
           >
             {/* name */}
             <div className='flex flex-col gap-1 md:gap-2'>
@@ -179,10 +175,7 @@ const ReactHookValidateContactForm: React.FC = () => {
                   validate: {
                     minWords: (value) => {
                       const wordCount = value.trim().split(/\s+/).length;
-                      if (wordCount < 6) {
-                        return 'Please enter a message with at least 6 words.';
-                      }
-                      return true;
+                      return wordCount >= 6 || 'Please enter a message with at least 6 words.';
                     },
                   },
                 })}
@@ -208,7 +201,12 @@ const ReactHookValidateContactForm: React.FC = () => {
             {/* submit */}
             <button
               type='submit'
-              className='rounded border-2 border-dominant bg-dominant p-2 px-4 text-sm font-semibold text-black transition-colors duration-300 ease-in-out hover:border-secondary hover:text-secondary active:scale-95 active:transform active:transition-all lg:text-base'
+              className={`rounded border-2 border-dominant bg-dominant p-2 px-4 text-sm font-semibold
+               text-black transition-colors duration-300 ease-in-out  
+               active:scale-95 active:transform active:transition-all lg:text-base
+               ${
+                isVerified ? 'hover:border-secondary hover:text-secondary' : 'opacity-50 cursor-not-allowed'
+              }`}
               aria-label='Submit your message'
               disabled={!isVerified}
             >
