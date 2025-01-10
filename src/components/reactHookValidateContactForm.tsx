@@ -199,7 +199,7 @@ const ReactHookValidateContactForm: React.FC = () => {
 
             {/* captcha */} 
             <ReCAPTCHA
-             sitekey='6Le42rIqAAAAAGfvrZXDAXbs_o7ijUkX913mVN6Q'
+             sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
              ref={recaptchaRef}
              onChange={handleCaptchaChange}
             />
