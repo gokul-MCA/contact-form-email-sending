@@ -4,7 +4,8 @@
 // Axios (for making HTTP requests) ---> npm i axios
 
 'use client';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import ReCAPTCHA from "react-google-recaptcha";
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { FormData } from '@/types/formdata';
@@ -18,15 +19,18 @@ const ReactHookValidateContactForm: React.FC = () => {
   } = useForm<FormData>();
   const [submit, setSubmit] = useState<string>('');
   const [status, setStatus] = useState<string>('');
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [isVerified, setIsVerified] = useState(false);
 
   const onSubmit = async (data: FormData) => {
-    setSubmit('Sending');
-    try {
-      const response = await axios.post('api/sendResend', data, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+    if (isVerified) {
+      setSubmit('Sending');
+      try {
+        const response = await axios.post('api/sendResend', data, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
       if (response.status === 200) {
         setSubmit('Sent');
         setStatus('Successfully sent ✅');
@@ -58,6 +62,36 @@ const ReactHookValidateContactForm: React.FC = () => {
     setTimeout(() => {
       setStatus('');
     }, 2000);
+  }
+  else{
+    setStatus("Please complete the CAPTCHA.");
+  }
+}
+
+
+
+  const handleCaptchaChange = (token: string | null) => {
+    handleCaptchaSubmission(token);
+  };
+
+  const handleCaptchaSubmission = async (token: string | null) => {
+    try {
+      if (token) {
+        const response = await fetch("/api/captcha", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ token }),
+        });
+
+        const data = await response.json();
+        setIsVerified(data.success);
+      }
+    } catch (e) {
+      console.error("CAPTCHA validation failed", e);
+      setIsVerified(false);
+    }
   };
 
   return (
@@ -163,11 +197,20 @@ const ReactHookValidateContactForm: React.FC = () => {
             </div>
             {/* end of message */}
 
+            {/* captcha */} 
+            <ReCAPTCHA
+             sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+             ref={recaptchaRef}
+             onChange={handleCaptchaChange}
+            />
+            {/* end of captcha */}
+
             {/* submit */}
             <button
               type='submit'
               className='rounded border-2 border-dominant bg-dominant p-2 px-4 text-sm font-semibold text-black transition-colors duration-300 ease-in-out hover:border-secondary hover:text-secondary active:scale-95 active:transform active:transition-all lg:text-base'
               aria-label='Submit your message'
+              disabled={!isVerified}
             >
               {submit ? submit : 'Send'}
             </button>
