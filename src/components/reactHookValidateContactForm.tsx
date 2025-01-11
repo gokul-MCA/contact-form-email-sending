@@ -28,7 +28,6 @@ const ReactHookValidateContactForm: React.FC = () => {
       setIsVerified(false);
       return;
     }
-    console.log('Captcha Token:', token);
     handleCaptchaSubmission(token);
   };
 
@@ -42,10 +41,10 @@ const ReactHookValidateContactForm: React.FC = () => {
           body: JSON.stringify({ token }),
         });
   
-        const data = await response.json();
-        setIsVerified(data.success);
+        const data: {message : string} = await response.json();
+        setIsVerified(data.message === 'Success');
   
-        if (!data.success) {
+        if (data.message !== 'Success') {
           setStatus('CAPTCHA verification failed. Please try again.');
         } else {
           setStatus('CAPTCHA verified successfully ✅');
