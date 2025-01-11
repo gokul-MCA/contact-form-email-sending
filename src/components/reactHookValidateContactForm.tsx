@@ -30,24 +30,28 @@ const ReactHookValidateContactForm: React.FC = () => {
   const handleCaptchaSubmission = async (token: string | null) => {
     try {
       if (token) {
-        const response = await fetch("/api/captcha", {
+        const response = await fetch('/api/captcha', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ token }),
         });
-
+  
         const data = await response.json();
         setIsVerified(data.success);
-        if (!data.success) setStatus('CAPTCHA verification failed.');
+  
+        if (!data.success) {
+          setStatus('CAPTCHA verification failed. Please try again.');
+        } else {
+          setStatus('CAPTCHA verified successfully ✅');
+        }
       }
-    } catch (e) {
-      console.error('CAPTCHA validation failed', e);
+    } catch (error) {
+      console.error('CAPTCHA validation failed:', error);
       setIsVerified(false);
-      setStatus('An error occurred with CAPTCHA validation.');
+      setStatus('An error occurred during CAPTCHA validation.');
     }
   };
+  
 
   const onSubmit = async (data: FormData) => {
     if (!isVerified) {
@@ -208,13 +212,13 @@ const ReactHookValidateContactForm: React.FC = () => {
             {/* submit */}
             <button
               type='submit'
-              className={`rounded border-2 border-dominant bg-dominant p-2 px-4 text-sm font-semibold text-black transition-colors duration-300 ease-in-out active:scale-95 active:transform active:transition-all lg:text-base ${
+              className={`rounded border-2 border-dominant bg-dominant p-2 px-4 text-sm font-semibold text-black transition-colors duration-300 ease-in-out active:scale-95 active:transform active:transition-all lg:text-base 
+                ${
                 isVerified
                   ? 'hover:border-secondary hover:text-secondary'
                   : 'cursor-not-allowed opacity-50'
               }`}
               aria-label='Submit your message'
-              // disabled={!isVerified}
             >
               {submit ? submit : 'Send'}
             </button>
