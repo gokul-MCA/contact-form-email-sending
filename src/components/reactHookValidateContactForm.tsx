@@ -23,6 +23,12 @@ const ReactHookValidateContactForm: React.FC = () => {
   const [isVerified, setIsVerified] = useState(false);
  
   const handleCaptchaChange = (token: string | null) => {
+    if (!token) {
+      setStatus('CAPTCHA verification failed.'); // Handle null tokens
+      setIsVerified(false);
+      return;
+    }
+    console.log('Captcha Token:', token);
     handleCaptchaSubmission(token);
   };
 

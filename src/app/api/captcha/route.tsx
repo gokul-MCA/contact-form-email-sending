@@ -32,15 +32,10 @@ export async function POST(req: Request) {
   try {
     // Send request to Google reCAPTCHA API
     const response = await axios.post(
-      `https://www.google.com/recaptcha/api/siteverify`,
-      null, // No body
-      {
-        params: {
-          secret: secretKey,
-          response: token,
-        },
-      },
+      `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${token}`
     );
+    console.log(response.data); // Check what the reCAPTCHA API returns
+    
 
     // Handle Google API response
     if (response.data.success) {
