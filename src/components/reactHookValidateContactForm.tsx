@@ -78,6 +78,7 @@ const ReactHookValidateContactForm: React.FC = () => {
         setTimeout(() => {
           reset();
           setSubmit('');
+          recaptchaRef.current.reset();
         }, 2000);
       } else {
         setSubmit('Retry');
