@@ -84,7 +84,7 @@ export default function RootLayout({
         className={`${inter.variable} ${merri.variable} flex items-center justify-center antialiased`}
       >
         <section className='w-[1024px]'>
-          <header className='m-6'>
+          <header className='m-6 w-fit'>
             <Link href='/' className='w-fit'>
               <Image
                 src='/logo.png'
