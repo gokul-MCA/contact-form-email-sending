@@ -85,7 +85,7 @@ export default function RootLayout({
       >
         <section className='w-[1024px]'>
           <header className='m-6'>
-            <Link href='/' className=''>
+            <Link href='/' className='w-fit'>
               <Image
                 src='/logo.png'
                 alt='logo'
