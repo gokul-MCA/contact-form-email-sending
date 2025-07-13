@@ -21,7 +21,11 @@ const ReactHookValidateContactForm: React.FC = () => {
   const [status, setStatus] = useState<string>('');
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [isVerified, setIsVerified] = useState(false);
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> 4605fda (fix: added new pages)
   const handleCaptchaChange = (token: string | null) => {
     if (!token) {
       setStatus('CAPTCHA verification failed.'); // Handle null tokens
@@ -31,7 +35,10 @@ const ReactHookValidateContactForm: React.FC = () => {
     handleCaptchaSubmission(token);
   };
 
+<<<<<<< HEAD
   
+=======
+>>>>>>> 4605fda (fix: added new pages)
   const handleCaptchaSubmission = async (token: string | null) => {
     try {
       if (token) {
@@ -40,10 +47,17 @@ const ReactHookValidateContactForm: React.FC = () => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ token }),
         });
+<<<<<<< HEAD
   
         const data: {message : string} = await response.json();
         setIsVerified(data.message === 'Success');
   
+=======
+
+        const data: { message: string } = await response.json();
+        setIsVerified(data.message === 'Success');
+
+>>>>>>> 4605fda (fix: added new pages)
         if (data.message !== 'Success') {
           setStatus('CAPTCHA verification failed. Please try again.');
         } else {
@@ -56,7 +70,10 @@ const ReactHookValidateContactForm: React.FC = () => {
       setStatus('An error occurred during CAPTCHA validation.');
     }
   };
+<<<<<<< HEAD
   
+=======
+>>>>>>> 4605fda (fix: added new pages)
 
   const onSubmit = async (data: FormData) => {
     if (!isVerified) {
@@ -104,9 +121,24 @@ const ReactHookValidateContactForm: React.FC = () => {
     }, 2000);
   };
 
+<<<<<<< HEAD
   return (
     <section>
       <div className='flex flex-col items-center justify-center px-4 py-6 lg:py-3'>
+=======
+  const handleCaptchaExpired = () => {
+    setTimeout(() => {
+      if (recaptchaRef.current) {
+        recaptchaRef.current.reset();
+        console.log("reseted")
+      }
+    }, 1000); // 1 second delay before resetting
+  };
+
+  return (
+    <section>
+      <div className='flex flex-col items-center justify-center px-4 py-6 lg:py-3 mt-8'>
+>>>>>>> 4605fda (fix: added new pages)
         <h1 className='px-6 text-lg font-bold text-secondary md:text-xl lg:text-2xl'>
           Contact Us - React Hook Form
         </h1>
@@ -211,6 +243,10 @@ const ReactHookValidateContactForm: React.FC = () => {
             <ReCAPTCHA
               sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
               ref={recaptchaRef}
+<<<<<<< HEAD
+=======
+              onExpired={handleCaptchaExpired}
+>>>>>>> 4605fda (fix: added new pages)
               onChange={handleCaptchaChange}
             />
             {/* end of captcha */}
@@ -218,8 +254,12 @@ const ReactHookValidateContactForm: React.FC = () => {
             {/* submit */}
             <button
               type='submit'
+<<<<<<< HEAD
               className={`rounded border-2 border-dominant bg-dominant p-2 px-4 text-sm font-semibold text-black transition-colors duration-300 ease-in-out active:scale-95 active:transform active:transition-all lg:text-base 
                 ${
+=======
+              className={`rounded border-2 border-dominant bg-dominant p-2 px-4 text-sm font-semibold text-black transition-colors duration-300 ease-in-out active:scale-95 active:transform active:transition-all lg:text-base ${
+>>>>>>> 4605fda (fix: added new pages)
                 isVerified
                   ? 'hover:border-secondary hover:text-secondary'
                   : 'cursor-not-allowed opacity-50'
