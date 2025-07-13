@@ -20,7 +20,7 @@ export default function Home() {
       />
 
       <p className='mb-0 max-w-screen-md text-pretty text-xs text-gray-600 md:mb-4 md:text-sm lg:text-base'>
-        Whether you're running a business, a portfolio, or a personal blog, a
+        Whether you&apos;re running a business, a portfolio, or a personal blog, a
         contact form is more than just a convenience — it’s a vital
         communication bridge between you and your visitors.
       </p>

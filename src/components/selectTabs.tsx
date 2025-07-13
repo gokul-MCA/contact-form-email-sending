@@ -61,7 +61,7 @@ const ReactJS = () => {
         <h2 className='mb-4 text-lg font-semibold text-[#035E35] md:text-xl'>
           React Hook Form + EmailJS
         </h2>
-        <p className='mb-4 text-pretty text-sm tracking-tight text-gray-600 md:text-base lg:text-lg'>If you're using only frontend</p>
+        <p className='mb-4 text-pretty text-sm tracking-tight text-gray-600 md:text-base lg:text-lg'>If you&apos;re using only frontend</p>
         <Link
           href='https://medium.com/@chrischarlesgibson/how-to-make-a-contact-form-using-emailjs-and-react-hook-form-8d9072b6474a'
           target='_blank'
