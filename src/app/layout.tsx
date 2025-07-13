@@ -1,9 +1,4 @@
 import '@/styles/globals.css';
-<<<<<<< HEAD
-import Image from 'next/image';
-import Link from 'next/link';
-=======
->>>>>>> 4605fda (fix: added new pages)
 import { Merriweather, Inter } from 'next/font/google';
 import { Metadata } from 'next';
 import {
@@ -11,10 +6,7 @@ import {
   GlobeIcon,
   LinkedInLogoIcon,
 } from '@radix-ui/react-icons';
-<<<<<<< HEAD
-=======
 import Header from '@/components/header';
->>>>>>> 4605fda (fix: added new pages)
 
 const inter = Inter({
   subsets: ['latin'],
@@ -90,28 +82,6 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${merri.variable} flex items-center justify-center antialiased`}
       >
-<<<<<<< HEAD
-        <section className='w-[1024px]'>
-          <header className='m-6 w-fit'>
-            <Link href='/' className='w-fit'>
-              <Image
-                src='/logo.png'
-                alt='logo'
-                height='60'
-                width='60'
-                loading='eager'
-                className='h-12 w-12 rounded-full border-2 border-green-800 bg-green-600 object-cover transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-dominant lg:h-16 lg:w-16'
-              />
-              <span className='sr-only'>
-                Click Logo to redirect/reload home
-              </span>
-            </Link>
-          </header>
-
-          {children}
-
-          <footer className='m-0'>
-=======
           <header>
             <Header />
           </header>
@@ -120,7 +90,6 @@ export default function RootLayout({
           {children}
 
           <footer className='m-0 '>
->>>>>>> 4605fda (fix: added new pages)
             <p className='p-2 text-center text-xs md:text-sm lg:text-base'>
               Built with love using <span className='animate-pulse'>💚 </span>
               <span className='font-semibold text-secondary'>
@@ -130,19 +99,11 @@ export default function RootLayout({
 
             <span className='flex items-center justify-center gap-4 p-2'>
               <span className='sr-only'>Links</span>
-<<<<<<< HEAD
-              <a href='https://github.com/gokul-MCA' target='_blank'>
-                <span className='sr-only'>Github Profile</span>
-                <GitHubLogoIcon className='h-6 w-6 text-secondary hover:text-dominant lg:h-8 lg:w-8' />
-              </a>
-              <a href='https://gokul-b.netlify.app/' target='_blank'>
-=======
               <a href='https://github.com/gokul-MCA/contact-form-email-sending' target='_blank'>
                 <span className='sr-only'>Github Profile</span>
                 <GitHubLogoIcon className='h-6 w-6 text-secondary hover:text-dominant lg:h-8 lg:w-8' />
               </a>
               <a href='https://gokul-b.vercel.app/' target='_blank'>
->>>>>>> 4605fda (fix: added new pages)
                 <span className='sr-only'>Personal Portfolio</span>
                 <GlobeIcon className='h-6 w-6 text-secondary hover:text-dominant lg:h-8 lg:w-8' />
               </a>

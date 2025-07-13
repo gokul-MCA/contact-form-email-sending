@@ -82,13 +82,8 @@ const ManualValidateContactForm: React.FC = () => {
     }
   };
   return (
-<<<<<<< HEAD
-    <section>
-      <div className='flex flex-col items-center justify-center px-4 py-4 lg:py-3'>
-=======
     <section >
       <div className='flex flex-col items-center justify-center px-4 py-4 lg:py-3 mt-8'>
->>>>>>> 4605fda (fix: added new pages)
         <h1 className='px-6 text-lg font-bold text-secondary md:text-xl lg:text-2xl'>
           Contact Us - Manual Validation using State Management
         </h1>
