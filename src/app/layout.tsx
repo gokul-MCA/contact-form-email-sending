@@ -79,6 +79,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
+      <head>
+        <meta name="google-site-verification" content="fiotuEhAnU7EHkl4HF6hvy00Sorkvk5WWAvFa4TJ5q8" />
+      </head>
       <body
         className={`${inter.variable} ${merri.variable} flex items-center justify-center antialiased`}
       >
